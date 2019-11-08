@@ -9,11 +9,17 @@
 /* Begin PBXBuildFile section */
 		177BB0A12375742500DF7327 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 177BB0A02375742500DF7327 /* AppDelegate.swift */; };
 		177BB0A32375742600DF7327 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 177BB0A22375742600DF7327 /* SceneDelegate.swift */; };
-		177BB0A52375742600DF7327 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 177BB0A42375742600DF7327 /* ViewController.swift */; };
 		177BB0A82375742600DF7327 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 177BB0A62375742600DF7327 /* Main.storyboard */; };
 		177BB0AA2375742800DF7327 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 177BB0A92375742800DF7327 /* Assets.xcassets */; };
 		177BB0AD2375742800DF7327 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 177BB0AB2375742800DF7327 /* LaunchScreen.storyboard */; };
 		177BB0B82375742800DF7327 /* VirtaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 177BB0B72375742800DF7327 /* VirtaTests.swift */; };
+		177BB0C82375753400DF7327 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 177BB0C72375753400DF7327 /* AppCoordinator.swift */; };
+		177BB0CB23757B1800DF7327 /* LoginCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 177BB0CA23757B1800DF7327 /* LoginCoordinator.swift */; };
+		177BB0CE23757B6E00DF7327 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 177BB0CD23757B6E00DF7327 /* MainCoordinator.swift */; };
+		177BB0D523757CA500DF7327 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 177BB0D423757CA500DF7327 /* LoginViewController.swift */; };
+		177BB0D723757CC600DF7327 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 177BB0D623757CC600DF7327 /* ViewController.swift */; };
+		177BB0D923757DB800DF7327 /* Storyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 177BB0D823757DB800DF7327 /* Storyboard.swift */; };
+		177BB0DC2375814900DF7327 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 177BB0DB2375814900DF7327 /* MainViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -30,7 +36,6 @@
 		177BB09D2375742500DF7327 /* Virta.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Virta.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		177BB0A02375742500DF7327 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		177BB0A22375742600DF7327 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		177BB0A42375742600DF7327 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		177BB0A72375742600DF7327 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		177BB0A92375742800DF7327 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		177BB0AC2375742800DF7327 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -38,6 +43,13 @@
 		177BB0B32375742800DF7327 /* VirtaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VirtaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		177BB0B72375742800DF7327 /* VirtaTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VirtaTests.swift; sourceTree = "<group>"; };
 		177BB0B92375742800DF7327 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		177BB0C72375753400DF7327 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
+		177BB0CA23757B1800DF7327 /* LoginCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginCoordinator.swift; sourceTree = "<group>"; };
+		177BB0CD23757B6E00DF7327 /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
+		177BB0D423757CA500DF7327 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		177BB0D623757CC600DF7327 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		177BB0D823757DB800DF7327 /* Storyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storyboard.swift; sourceTree = "<group>"; };
+		177BB0DB2375814900DF7327 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,13 +91,11 @@
 		177BB09F2375742500DF7327 /* Virta */ = {
 			isa = PBXGroup;
 			children = (
-				177BB0A02375742500DF7327 /* AppDelegate.swift */,
-				177BB0A22375742600DF7327 /* SceneDelegate.swift */,
-				177BB0A42375742600DF7327 /* ViewController.swift */,
-				177BB0A62375742600DF7327 /* Main.storyboard */,
-				177BB0A92375742800DF7327 /* Assets.xcassets */,
-				177BB0AB2375742800DF7327 /* LaunchScreen.storyboard */,
-				177BB0AE2375742800DF7327 /* Info.plist */,
+				177BB0D123757C5A00DF7327 /* Services */,
+				177BB0C42375748800DF7327 /* ViewModel-Model */,
+				177BB0C32375748200DF7327 /* View */,
+				177BB0C22375747A00DF7327 /* Coordintor */,
+				177BB0C6237574A900DF7327 /* Resources */,
 			);
 			path = Virta;
 			sourceTree = "<group>";
@@ -97,6 +107,110 @@
 				177BB0B92375742800DF7327 /* Info.plist */,
 			);
 			path = VirtaTests;
+			sourceTree = "<group>";
+		};
+		177BB0C22375747A00DF7327 /* Coordintor */ = {
+			isa = PBXGroup;
+			children = (
+				177BB0A02375742500DF7327 /* AppDelegate.swift */,
+				177BB0A22375742600DF7327 /* SceneDelegate.swift */,
+				177BB0C72375753400DF7327 /* AppCoordinator.swift */,
+				177BB0C923757B0900DF7327 /* LoginCoordinator */,
+				177BB0CC23757B5900DF7327 /* MainCoordinator */,
+			);
+			path = Coordintor;
+			sourceTree = "<group>";
+		};
+		177BB0C32375748200DF7327 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				177BB0A62375742600DF7327 /* Main.storyboard */,
+				177BB0D823757DB800DF7327 /* Storyboard.swift */,
+				177BB0D623757CC600DF7327 /* ViewController.swift */,
+				177BB0CF23757C4900DF7327 /* LoginView */,
+				177BB0DA2375813900DF7327 /* MainViewController */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		177BB0C42375748800DF7327 /* ViewModel-Model */ = {
+			isa = PBXGroup;
+			children = (
+				177BB0D023757C5100DF7327 /* Login */,
+			);
+			path = "ViewModel-Model";
+			sourceTree = "<group>";
+		};
+		177BB0C52375748E00DF7327 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		177BB0C6237574A900DF7327 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				177BB0A92375742800DF7327 /* Assets.xcassets */,
+				177BB0AB2375742800DF7327 /* LaunchScreen.storyboard */,
+				177BB0AE2375742800DF7327 /* Info.plist */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		177BB0C923757B0900DF7327 /* LoginCoordinator */ = {
+			isa = PBXGroup;
+			children = (
+				177BB0CA23757B1800DF7327 /* LoginCoordinator.swift */,
+			);
+			path = LoginCoordinator;
+			sourceTree = "<group>";
+		};
+		177BB0CC23757B5900DF7327 /* MainCoordinator */ = {
+			isa = PBXGroup;
+			children = (
+				177BB0CD23757B6E00DF7327 /* MainCoordinator.swift */,
+			);
+			path = MainCoordinator;
+			sourceTree = "<group>";
+		};
+		177BB0CF23757C4900DF7327 /* LoginView */ = {
+			isa = PBXGroup;
+			children = (
+				177BB0D423757CA500DF7327 /* LoginViewController.swift */,
+			);
+			path = LoginView;
+			sourceTree = "<group>";
+		};
+		177BB0D023757C5100DF7327 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				177BB0C52375748E00DF7327 /* Model */,
+				177BB0D223757C6000DF7327 /* ViewModel */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		177BB0D123757C5A00DF7327 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		177BB0D223757C6000DF7327 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		177BB0DA2375813900DF7327 /* MainViewController */ = {
+			isa = PBXGroup;
+			children = (
+				177BB0DB2375814900DF7327 /* MainViewController.swift */,
+			);
+			path = MainViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -200,7 +314,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				177BB0A52375742600DF7327 /* ViewController.swift in Sources */,
+				177BB0D523757CA500DF7327 /* LoginViewController.swift in Sources */,
+				177BB0C82375753400DF7327 /* AppCoordinator.swift in Sources */,
+				177BB0CE23757B6E00DF7327 /* MainCoordinator.swift in Sources */,
+				177BB0CB23757B1800DF7327 /* LoginCoordinator.swift in Sources */,
+				177BB0D923757DB800DF7327 /* Storyboard.swift in Sources */,
+				177BB0D723757CC600DF7327 /* ViewController.swift in Sources */,
+				177BB0DC2375814900DF7327 /* MainViewController.swift in Sources */,
 				177BB0A12375742500DF7327 /* AppDelegate.swift in Sources */,
 				177BB0A32375742600DF7327 /* SceneDelegate.swift in Sources */,
 			);
@@ -364,7 +484,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = M4M4845P22;
-				INFOPLIST_FILE = Virta/Info.plist;
+				INFOPLIST_FILE = Virta/Resources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -372,7 +492,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.hassaniiii.Virta;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -382,7 +502,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = M4M4845P22;
-				INFOPLIST_FILE = Virta/Info.plist;
+				INFOPLIST_FILE = Virta/Resources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -390,7 +510,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.hassaniiii.Virta;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
