@@ -37,10 +37,17 @@ final class AppCoordinator: Coordinator {
         return MainCoordinator(window: self.window)
     }()
     func start() {
-        self.mainCoordinator.start()
+        userDidLoggedIn ? self.mainCoordinator.start() : self.loginCoordinator.start()
+        
     }
     
     func start(with navigationController: UINavigationController) {
         fatalError("Cannot access to `start(with:)` on AppCoordinator")
+    }
+}
+
+extension AppCoordinator {
+    private var userDidLoggedIn: Bool {
+        return KeychainWrapeprImpl().getValue(for: Constants.authorizationKey) != nil
     }
 }

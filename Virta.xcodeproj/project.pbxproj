@@ -3,16 +3,16 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1513A0C2F4ADBA5252FF596B /* Pods_Virta.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3883761E39626C5EB69472A7 /* Pods_Virta.framework */; };
 		177BB0A12375742500DF7327 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 177BB0A02375742500DF7327 /* AppDelegate.swift */; };
 		177BB0A32375742600DF7327 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 177BB0A22375742600DF7327 /* SceneDelegate.swift */; };
 		177BB0A82375742600DF7327 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 177BB0A62375742600DF7327 /* Main.storyboard */; };
 		177BB0AA2375742800DF7327 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 177BB0A92375742800DF7327 /* Assets.xcassets */; };
 		177BB0AD2375742800DF7327 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 177BB0AB2375742800DF7327 /* LaunchScreen.storyboard */; };
-		177BB0B82375742800DF7327 /* VirtaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 177BB0B72375742800DF7327 /* VirtaTests.swift */; };
 		177BB0C82375753400DF7327 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 177BB0C72375753400DF7327 /* AppCoordinator.swift */; };
 		177BB0CB23757B1800DF7327 /* LoginCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 177BB0CA23757B1800DF7327 /* LoginCoordinator.swift */; };
 		177BB0CE23757B6E00DF7327 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 177BB0CD23757B6E00DF7327 /* MainCoordinator.swift */; };
@@ -20,6 +20,14 @@
 		177BB0D723757CC600DF7327 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 177BB0D623757CC600DF7327 /* ViewController.swift */; };
 		177BB0D923757DB800DF7327 /* Storyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 177BB0D823757DB800DF7327 /* Storyboard.swift */; };
 		177BB0DC2375814900DF7327 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 177BB0DB2375814900DF7327 /* MainViewController.swift */; };
+		177BB0DF2375835400DF7327 /* KeychainWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 177BB0DE2375835400DF7327 /* KeychainWrapper.swift */; };
+		177BB0E12375847000DF7327 /* KeychainTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 177BB0E02375847000DF7327 /* KeychainTests.swift */; };
+		177BB0E32375857E00DF7327 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 177BB0E22375857E00DF7327 /* Constants.swift */; };
+		17C892A92376BFA700F24057 /* UIView+AutoLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C892A82376BFA700F24057 /* UIView+AutoLayout.swift */; };
+		17C892AB2376C26F00F24057 /* String+NSLocalized.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C892AA2376C26F00F24057 /* String+NSLocalized.swift */; };
+		17C892AD2376CCCD00F24057 /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C892AC2376CCCD00F24057 /* UIView+Extensions.swift */; };
+		17C892AF2376D07D00F24057 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C892AE2376D07D00F24057 /* LoginViewModel.swift */; };
+		A8C7742CBAA018599D8268E7 /* Pods_VirtaTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E8FF06ECD77067998781E0F /* Pods_VirtaTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,7 +49,6 @@
 		177BB0AC2375742800DF7327 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		177BB0AE2375742800DF7327 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		177BB0B32375742800DF7327 /* VirtaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VirtaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		177BB0B72375742800DF7327 /* VirtaTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VirtaTests.swift; sourceTree = "<group>"; };
 		177BB0B92375742800DF7327 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		177BB0C72375753400DF7327 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		177BB0CA23757B1800DF7327 /* LoginCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginCoordinator.swift; sourceTree = "<group>"; };
@@ -50,6 +57,19 @@
 		177BB0D623757CC600DF7327 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		177BB0D823757DB800DF7327 /* Storyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storyboard.swift; sourceTree = "<group>"; };
 		177BB0DB2375814900DF7327 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		177BB0DE2375835400DF7327 /* KeychainWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainWrapper.swift; sourceTree = "<group>"; };
+		177BB0E02375847000DF7327 /* KeychainTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainTests.swift; sourceTree = "<group>"; };
+		177BB0E22375857E00DF7327 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		17C892A82376BFA700F24057 /* UIView+AutoLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+AutoLayout.swift"; sourceTree = "<group>"; };
+		17C892AA2376C26F00F24057 /* String+NSLocalized.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+NSLocalized.swift"; sourceTree = "<group>"; };
+		17C892AC2376CCCD00F24057 /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
+		17C892AE2376D07D00F24057 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		2717B9F94CB45DCB3BE00BD2 /* Pods-Virta.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Virta.debug.xcconfig"; path = "Target Support Files/Pods-Virta/Pods-Virta.debug.xcconfig"; sourceTree = "<group>"; };
+		2E8FF06ECD77067998781E0F /* Pods_VirtaTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VirtaTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3883761E39626C5EB69472A7 /* Pods_Virta.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Virta.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		78BB64E63960664D119A8F40 /* Pods-Virta.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Virta.release.xcconfig"; path = "Target Support Files/Pods-Virta/Pods-Virta.release.xcconfig"; sourceTree = "<group>"; };
+		9BBCC582DC73DE2033E1AF45 /* Pods-VirtaTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VirtaTests.release.xcconfig"; path = "Target Support Files/Pods-VirtaTests/Pods-VirtaTests.release.xcconfig"; sourceTree = "<group>"; };
+		ECDADCD086CB2905EDA8B853 /* Pods-VirtaTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VirtaTests.debug.xcconfig"; path = "Target Support Files/Pods-VirtaTests/Pods-VirtaTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +77,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1513A0C2F4ADBA5252FF596B /* Pods_Virta.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -64,6 +85,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A8C7742CBAA018599D8268E7 /* Pods_VirtaTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -76,6 +98,8 @@
 				177BB09F2375742500DF7327 /* Virta */,
 				177BB0B62375742800DF7327 /* VirtaTests */,
 				177BB09E2375742500DF7327 /* Products */,
+				9247E59D78BCFD23AB57F2B1 /* Pods */,
+				9DA29BD3809264039383595B /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -91,8 +115,9 @@
 		177BB09F2375742500DF7327 /* Virta */ = {
 			isa = PBXGroup;
 			children = (
+				177BB0DD2375834600DF7327 /* Helper */,
 				177BB0D123757C5A00DF7327 /* Services */,
-				177BB0C42375748800DF7327 /* ViewModel-Model */,
+				177BB0C42375748800DF7327 /* ViewModel */,
 				177BB0C32375748200DF7327 /* View */,
 				177BB0C22375747A00DF7327 /* Coordintor */,
 				177BB0C6237574A900DF7327 /* Resources */,
@@ -103,8 +128,8 @@
 		177BB0B62375742800DF7327 /* VirtaTests */ = {
 			isa = PBXGroup;
 			children = (
-				177BB0B72375742800DF7327 /* VirtaTests.swift */,
 				177BB0B92375742800DF7327 /* Info.plist */,
+				177BB0E02375847000DF7327 /* KeychainTests.swift */,
 			);
 			path = VirtaTests;
 			sourceTree = "<group>";
@@ -133,12 +158,12 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		177BB0C42375748800DF7327 /* ViewModel-Model */ = {
+		177BB0C42375748800DF7327 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
 				177BB0D023757C5100DF7327 /* Login */,
 			);
-			path = "ViewModel-Model";
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		177BB0C52375748E00DF7327 /* Model */ = {
@@ -201,6 +226,7 @@
 		177BB0D223757C6000DF7327 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				17C892AE2376D07D00F24057 /* LoginViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -213,6 +239,46 @@
 			path = MainViewController;
 			sourceTree = "<group>";
 		};
+		177BB0DD2375834600DF7327 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				177BB0DE2375835400DF7327 /* KeychainWrapper.swift */,
+				177BB0E22375857E00DF7327 /* Constants.swift */,
+				17C892A72376BF9000F24057 /* Extensions */,
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
+		17C892A72376BF9000F24057 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				17C892A82376BFA700F24057 /* UIView+AutoLayout.swift */,
+				17C892AC2376CCCD00F24057 /* UIView+Extensions.swift */,
+				17C892AA2376C26F00F24057 /* String+NSLocalized.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		9247E59D78BCFD23AB57F2B1 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				2717B9F94CB45DCB3BE00BD2 /* Pods-Virta.debug.xcconfig */,
+				78BB64E63960664D119A8F40 /* Pods-Virta.release.xcconfig */,
+				ECDADCD086CB2905EDA8B853 /* Pods-VirtaTests.debug.xcconfig */,
+				9BBCC582DC73DE2033E1AF45 /* Pods-VirtaTests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		9DA29BD3809264039383595B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3883761E39626C5EB69472A7 /* Pods_Virta.framework */,
+				2E8FF06ECD77067998781E0F /* Pods_VirtaTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -220,9 +286,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 177BB0BC2375742800DF7327 /* Build configuration list for PBXNativeTarget "Virta" */;
 			buildPhases = (
+				63CAC0241876FE27900D0630 /* [CP] Check Pods Manifest.lock */,
 				177BB0992375742500DF7327 /* Sources */,
 				177BB09A2375742500DF7327 /* Frameworks */,
 				177BB09B2375742500DF7327 /* Resources */,
+				A2E8FA66CD0555ED6AC5DD8A /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -237,6 +305,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 177BB0BF2375742800DF7327 /* Build configuration list for PBXNativeTarget "VirtaTests" */;
 			buildPhases = (
+				C00606BCDBE37BB77D6227C7 /* [CP] Check Pods Manifest.lock */,
 				177BB0AF2375742800DF7327 /* Sources */,
 				177BB0B02375742800DF7327 /* Frameworks */,
 				177BB0B12375742800DF7327 /* Resources */,
@@ -266,6 +335,7 @@
 					};
 					177BB0B22375742800DF7327 = {
 						CreatedOnToolsVersion = 11.2;
+						LastSwiftMigration = 1120;
 						TestTargetID = 177BB09C2375742500DF7327;
 					};
 				};
@@ -309,20 +379,90 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		63CAC0241876FE27900D0630 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Virta-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A2E8FA66CD0555ED6AC5DD8A /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Virta/Pods-Virta-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Virta/Pods-Virta-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Virta/Pods-Virta-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C00606BCDBE37BB77D6227C7 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-VirtaTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		177BB0992375742500DF7327 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				17C892AD2376CCCD00F24057 /* UIView+Extensions.swift in Sources */,
 				177BB0D523757CA500DF7327 /* LoginViewController.swift in Sources */,
+				17C892A92376BFA700F24057 /* UIView+AutoLayout.swift in Sources */,
+				177BB0E32375857E00DF7327 /* Constants.swift in Sources */,
 				177BB0C82375753400DF7327 /* AppCoordinator.swift in Sources */,
 				177BB0CE23757B6E00DF7327 /* MainCoordinator.swift in Sources */,
 				177BB0CB23757B1800DF7327 /* LoginCoordinator.swift in Sources */,
 				177BB0D923757DB800DF7327 /* Storyboard.swift in Sources */,
+				17C892AF2376D07D00F24057 /* LoginViewModel.swift in Sources */,
 				177BB0D723757CC600DF7327 /* ViewController.swift in Sources */,
 				177BB0DC2375814900DF7327 /* MainViewController.swift in Sources */,
 				177BB0A12375742500DF7327 /* AppDelegate.swift in Sources */,
+				17C892AB2376C26F00F24057 /* String+NSLocalized.swift in Sources */,
 				177BB0A32375742600DF7327 /* SceneDelegate.swift in Sources */,
+				177BB0DF2375835400DF7327 /* KeychainWrapper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -330,7 +470,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				177BB0B82375742800DF7327 /* VirtaTests.swift in Sources */,
+				177BB0E12375847000DF7327 /* KeychainTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -480,6 +620,7 @@
 		};
 		177BB0BD2375742800DF7327 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2717B9F94CB45DCB3BE00BD2 /* Pods-Virta.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -498,6 +639,7 @@
 		};
 		177BB0BE2375742800DF7327 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 78BB64E63960664D119A8F40 /* Pods-Virta.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -516,9 +658,11 @@
 		};
 		177BB0C02375742800DF7327 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = ECDADCD086CB2905EDA8B853 /* Pods-VirtaTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = M4M4845P22;
 				INFOPLIST_FILE = VirtaTests/Info.plist;
@@ -530,6 +674,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.hassaniiii.VirtaTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Virta.app/Virta";
@@ -538,9 +683,11 @@
 		};
 		177BB0C12375742800DF7327 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9BBCC582DC73DE2033E1AF45 /* Pods-VirtaTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = M4M4845P22;
 				INFOPLIST_FILE = VirtaTests/Info.plist;

@@ -10,13 +10,129 @@ import UIKit
 
 final class LoginViewController: UIViewController, ViewController {
     
+    // MARK: - Views
+    
+    private lazy var pageTitle: UILabel = {
+        let view = UILabel(frame: .zero)
+        view.textAlignment = .center
+        view.font = UIFont.boldSystemFont(ofSize: 16.0)
+        view.text = "Login and Charge!".localized
+        
+        return view
+    }()
+    private lazy var loginLogo: UIImageView = {
+        let view = UIImageView(frame: .zero)
+        view.image = #imageLiteral(resourceName: "logIn.jpg")
+        view.contentMode = .scaleAspectFit
+        
+        return view
+    }()
+    private lazy var userNameField: UITextField = {
+        let view = UITextField(frame: .zero)
+        view.placeholder = "Username".localized
+        view.returnKeyType = .next
+        view.enablesReturnKeyAutomatically = true
+        view.delegate = self
+        
+        return view
+    }()
+    private lazy var passwordField: UITextField = {
+        let view = UITextField(frame: .zero)
+        view.placeholder = "Password".localized
+        view.isSecureTextEntry = true
+        view.returnKeyType = .done
+        view.enablesReturnKeyAutomatically = true
+        view.delegate = self
+        
+        return view
+    }()
+    private lazy var credentialContainer: UIStackView = {
+        let view = UIStackView(frame: .zero)
+        view.axis = .vertical
+        view.spacing = 8.0
+        
+        let userNameView = UIStackView(frame: .zero)
+        userNameView.axis = .horizontal
+        userNameView.spacing = 8.0
+        userNameView.addArrangedSubview(UIImageView(image: #imageLiteral(resourceName: "icPerson.jpg")).fix(width: 40.0))
+        userNameView.addArrangedSubview(userNameField)
+        
+        let passwordView = UIStackView(frame: .zero)
+        passwordView.axis = .horizontal
+        passwordView.spacing = 8.0
+        passwordView.addArrangedSubview(UIImageView(image: #imageLiteral(resourceName: "icLock.jpg")).fix(width: 40.0))
+        passwordView.addArrangedSubview(passwordField)
+        
+        view.addArrangedSubview(userNameView.fix(height: 40.0))
+        view.addArrangedSubview(UIView.`init`(.lightGray).fix(height: 1.0))
+        view.addArrangedSubview(passwordView.fix(height: 40.0))
+        view.addArrangedSubview(UIView.`init`(.lightGray).fix(height: 1.0))
+        return view
+    }()
+    private lazy var loginBtn: UIButton = {
+        let view = UIButton(frame: .zero)
+        view.backgroundColor = .yellow
+        view.setTitleColor(.black, for: .normal)
+        view.setTitle("Login".localized, for: .normal)
+        view.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16.0)
+        view.addTarget(self, action: #selector(onLoingButtonTapped(_:)), for: .touchUpInside)
+        
+        return view
+    }()
+    
+    // MARK: - ViewController
+    
+    func autolayoutSubviews() {
+        self.view.addSubview(pageTitle)
+        pageTitle
+            .fix(left: (8.0, self.view), right: (8.0, self.view))
+            .fix(top: (32.0, self.view), isRelative: false)
+            .center(toX: self.view)
+        
+        self.view.addSubview(loginLogo)
+        loginLogo
+            .fix(width: 150.0, height: 150.0)
+            .fix(top: (16.0, self.pageTitle))
+            .center(toX: self.view)
+        
+        self.view.addSubview(credentialContainer)
+        credentialContainer
+            .fix(left: (8.0, self.view), right: (8.0, self.view))
+            .fix(top: (16.0, self.loginLogo))
+        
+        self.view.addSubview(loginBtn)
+        loginBtn
+            .fix(top: (32.0, credentialContainer))
+            .fix(width: 150.0, height: 38.0)
+            .center(toX: self.view)
+    }
+    
     // MARK: - UIViewController
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        #if DEBUG
-        print("Login view did load")
-        #endif
+        self.autolayoutSubviews()
+    }
+    
+    // MARK: - User actions
+    
+    @objc
+    func onLoingButtonTapped(_ sender: Any) {
+    }
+}
+
+
+
+extension LoginViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField == userNameField {
+            passwordField.becomeFirstResponder()
+        } else if textField == passwordField {
+            passwordField.resignFirstResponder()
+            self.onLoingButtonTapped(textField)
+        }
+        
+        return true
     }
 }

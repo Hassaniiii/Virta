@@ -10,6 +10,8 @@ import UIKit
 
 protocol ViewController: UIViewController {
     var backgroundColor: UIColor { set get }
+    
+    func autolayoutSubviews()
 }
 
 extension ViewController {
