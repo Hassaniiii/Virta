@@ -15,14 +15,21 @@ final class MainCoordinator: Coordinator {
         self.window = window
     }
     
-    private lazy var mainViewController: MainViewController = {
-        return Storyboard.main.instantiateViewController()
+    private lazy var stationsViewController: StationsViewController = {
+        let stationsViewController = Storyboard.main.instantiateViewController() as StationsViewController
+        stationsViewController.title = "Nearby".localized
+        stationsViewController.viewModel = stationsViewModel
+        
+        return stationsViewController
+    }()
+    private lazy var stationsViewModel: StationsViewModel = {
+        let viewModel = StationsViewModelImpl()
+        viewModel.locationService = LocationServiceImpl()
+        
+        return viewModel
     }()
     private lazy var navigationController: UINavigationController = {
-        let navigationController = UINavigationController(rootViewController: mainViewController)
-        navigationController.setNavigationBarHidden(true, animated: false)
-        
-        return navigationController
+        return UINavigationController(rootViewController: stationsViewController)
     }()
     
     func start() {        
@@ -31,6 +38,7 @@ final class MainCoordinator: Coordinator {
     }
     
     func start(with navigationController: UINavigationController) {
-        navigationController.pushViewController(mainViewController, animated: true)
+        navigationController.setNavigationBarHidden(false, animated: false)
+        navigationController.pushViewController(stationsViewController, animated: true)
     }
 }

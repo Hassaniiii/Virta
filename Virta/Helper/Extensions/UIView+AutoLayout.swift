@@ -24,15 +24,15 @@ extension UIView {
     }
     
     @discardableResult
-    func fix(left: (value: CGFloat, toView: UIView)? = nil, right: (value: CGFloat, toView: UIView)? = nil) -> UIView {
+    func fix(left: (value: CGFloat, toView: UIView)? = nil, right: (value: CGFloat, toView: UIView)? = nil, isRelative: Bool = false) -> UIView {
         self.translatesAutoresizingMaskIntoConstraints = false
         if let leftSide = left {
             let (value, toView) = leftSide
-            self.leadingAnchor.constraint(equalTo: toView.leadingAnchor, constant: value).isActive = true
+            self.leadingAnchor.constraint(equalTo: isRelative ? toView.trailingAnchor : toView.leadingAnchor, constant: value).isActive = true
         }
         if let rightSide = right {
             let (value, toView) = rightSide
-            self.trailingAnchor.constraint(equalTo: toView.trailingAnchor, constant: -value).isActive = true
+            self.trailingAnchor.constraint(equalTo: isRelative ? toView.leadingAnchor : toView.trailingAnchor, constant: -value).isActive = true
         }
         return self
     }

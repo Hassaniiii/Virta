@@ -15,7 +15,7 @@ struct LoginRequest: Request {
     var path: String = "/auth"
     var httpMethod: HTTPMethod = .post
     var headers: [String : String]? = RequestHeaderImpl().headers
-    var bodyJSON: LoginRequestBody?
+    var bodyJSON: BodyType?
     
     init(username: String, password: String) {
         bodyJSON = LoginRequestBody(email: username, code: password)

@@ -25,8 +25,12 @@ struct RequestHeaderImpl: RequestHeader {
     // MARK: - Initialization
     
     init(_ headerSet: HeaderSet) {
-        if headerSet == .defaultHeader {
+        switch headerSet {
+        case .defaultHeader:
             self.headers = self.commonHeaders
+        case .authorizedHeader(let token):
+            self.headers = self.commonHeaders
+            self.headers[HeaderType.authorization.rawValue] = token
         }
     }
     
@@ -40,10 +44,12 @@ struct RequestHeaderImpl: RequestHeader {
 
 enum HeaderSet {
     case defaultHeader
+    case authorizedHeader(String)
 }
 
 enum HeaderType: String {
     case contentType = "content-type"
+    case authorization = "Authorization"
 }
 
 enum ContentType: String {

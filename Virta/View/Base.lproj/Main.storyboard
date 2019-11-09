@@ -22,10 +22,10 @@
             </objects>
             <point key="canvasLocation" x="-514" y="110"/>
         </scene>
-        <!--Main View Controller-->
+        <!--Stations View Controller-->
         <scene sceneID="vO5-Ot-bkd">
             <objects>
-                <viewController storyboardIdentifier="MainViewController" id="sX1-Ku-Z0e" customClass="MainViewController" customModule="Virta" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="StationsViewController" id="sX1-Ku-Z0e" customClass="StationsViewController" customModule="Virta" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="SIT-uR-6gq">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

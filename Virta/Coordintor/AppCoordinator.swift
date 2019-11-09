@@ -45,6 +45,6 @@ final class AppCoordinator: Coordinator {
 
 extension AppCoordinator {
     private var userDidLoggedIn: Bool {
-        return KeychainWrapeprImpl().getValue(for: Constants.authorizationKey) != nil
+        return KeychainWrapeprImpl().getValue(for: Constants.AuthorizationKey) != nil
     }
 }

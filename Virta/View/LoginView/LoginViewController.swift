@@ -166,7 +166,7 @@ final class LoginViewController: UIViewController, ViewController {
         self.viewModel.login
             .sink(receiveCompletion: { [weak self] completion in
                 if case let .failure(error) = completion {
-                    let alert = UIAlertController(title: "Error".localized, message: error.errorDescription, preferredStyle: .alert)
+                    let alert = UIAlertController(title: "Error \(error.statusCode)".localized, message: error.message, preferredStyle: .alert)
                     alert.addAction(UIAlertAction(title: "OK".localized, style: .default, handler: nil))
                     self?.present(alert, animated: true, completion: nil)
                 }

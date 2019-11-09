@@ -11,7 +11,6 @@ import Combine
 
 protocol ServiceManager {
     func performRequest<T: Request>(_ request: T) -> AnyPublisher<T.ReturnType, APIError>
-    func performRequestNoReturn<T: Request>(_ request: T) -> AnyPublisher<Void, APIError>
 }
 
 final class ServiceManagerImpl: ServiceManager, ObservableObject {
@@ -20,7 +19,7 @@ final class ServiceManagerImpl: ServiceManager, ObservableObject {
     func performRequest<T>(_ request: T) -> AnyPublisher<T.ReturnType, APIError> where T : Request {
         session.dataTaskPublisher(for: self.urlRequest(request))
             .tryMap { data, response in
-                try self.validateResponse(response)
+                try self.validateResponse(data, response)
                 return data
             }
             .decode(type: T.ReturnType.self, decoder: JSONDecoder())
@@ -30,33 +29,20 @@ final class ServiceManagerImpl: ServiceManager, ObservableObject {
             .eraseToAnyPublisher()
     }
     
-    func performRequestNoReturn<T>(_ request: T) -> AnyPublisher<Void, APIError> where T : Request {
-        session.dataTaskPublisher(for: self.urlRequest(request))
-            .tryMap { data, response in
-                try self.validateResponse(response)
-            }
-            .mapError { error in
-                self.transformError(error)
-            }
-            .receive(on: DispatchQueue.main)
-            .eraseToAnyPublisher()
-    }
-    
-    private func validateResponse(_ response: URLResponse) throws {
-        guard let httpResponse = response as? HTTPURLResponse else {
-            throw APIError.noData
-        }
-        guard 200 ... 299 ~= httpResponse.statusCode else {
-            throw APIError.detailed(httpResponse.statusCode, nil)
+    private func validateResponse(_ data: Data, _ response: URLResponse) throws {
+        guard let httpResponse = response as? HTTPURLResponse, 200 ... 299 ~= httpResponse.statusCode else {
+            throw try JSONDecoder().decode(APIError.self, from: data)
         }
     }
     
-    private func transformError(_ err: Error) -> APIError {
-        if let apiError = err as? APIError {
+    private func transformError(_ error: Error) -> APIError {
+        if let apiError = error as? APIError {
             return apiError
         }
-        return APIError.detailed((err as NSError).code, (err as NSError).localizedDescription)
+        let nserror = error as NSError
+        return APIError(statusCode: nserror.code, message: nserror.localizedDescription, errorCode: nserror.code)
     }
+
     
     private func urlRequest<T: Request>(_ request: T, cache: URLRequest.CachePolicy = .useProtocolCachePolicy) -> URLRequest {
         guard let url = URL(string: "\(request.host)\(request.path)") else {
@@ -66,7 +52,10 @@ final class ServiceManagerImpl: ServiceManager, ObservableObject {
         var urlRequest = URLRequest(url: url)
         urlRequest.httpMethod = request.httpMethod.rawValue
         urlRequest.allHTTPHeaderFields = request.headers
-        urlRequest.httpBody = request.body
+        if request.httpMethod != .get {
+            // to prevent error code -1103 on iOS
+            urlRequest.httpBody = request.body
+        }
         urlRequest.cachePolicy = cache
 
         return urlRequest
