@@ -27,9 +27,6 @@ final class AppCoordinator: Coordinator {
     
     // MARK: - Coordinator
     
-    private lazy var navigationController: UINavigationController = {
-        return UINavigationController()
-    }()
     private lazy var loginCoordinator: Coordinator = {
         return LoginCoordinator(window: self.window)
     }()

@@ -27,6 +27,14 @@
 		17C892AB2376C26F00F24057 /* String+NSLocalized.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C892AA2376C26F00F24057 /* String+NSLocalized.swift */; };
 		17C892AD2376CCCD00F24057 /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C892AC2376CCCD00F24057 /* UIView+Extensions.swift */; };
 		17C892AF2376D07D00F24057 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C892AE2376D07D00F24057 /* LoginViewModel.swift */; };
+		17C892B12376D7CD00F24057 /* ServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C892B02376D7CD00F24057 /* ServiceManager.swift */; };
+		17C892B32376D7D700F24057 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C892B22376D7D700F24057 /* Result.swift */; };
+		17C892B52376D84500F24057 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C892B42376D84500F24057 /* Request.swift */; };
+		17C892B72376D85D00F24057 /* RequestHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C892B62376D85D00F24057 /* RequestHeader.swift */; };
+		17C892BA2376D89000F24057 /* LoginRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C892B92376D89000F24057 /* LoginRequest.swift */; };
+		17C892BC2376D93200F24057 /* LoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C892BB2376D93200F24057 /* LoginModel.swift */; };
+		17C892BE2376E04F00F24057 /* LoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C892BD2376E04F00F24057 /* LoginService.swift */; };
+		17C892C22376EF8E00F24057 /* LoginTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C892C12376EF8E00F24057 /* LoginTests.swift */; };
 		A8C7742CBAA018599D8268E7 /* Pods_VirtaTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E8FF06ECD77067998781E0F /* Pods_VirtaTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -64,6 +72,14 @@
 		17C892AA2376C26F00F24057 /* String+NSLocalized.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+NSLocalized.swift"; sourceTree = "<group>"; };
 		17C892AC2376CCCD00F24057 /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
 		17C892AE2376D07D00F24057 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		17C892B02376D7CD00F24057 /* ServiceManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceManager.swift; sourceTree = "<group>"; };
+		17C892B22376D7D700F24057 /* Result.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
+		17C892B42376D84500F24057 /* Request.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
+		17C892B62376D85D00F24057 /* RequestHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestHeader.swift; sourceTree = "<group>"; };
+		17C892B92376D89000F24057 /* LoginRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRequest.swift; sourceTree = "<group>"; };
+		17C892BB2376D93200F24057 /* LoginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginModel.swift; sourceTree = "<group>"; };
+		17C892BD2376E04F00F24057 /* LoginService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginService.swift; sourceTree = "<group>"; };
+		17C892C12376EF8E00F24057 /* LoginTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginTests.swift; sourceTree = "<group>"; };
 		2717B9F94CB45DCB3BE00BD2 /* Pods-Virta.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Virta.debug.xcconfig"; path = "Target Support Files/Pods-Virta/Pods-Virta.debug.xcconfig"; sourceTree = "<group>"; };
 		2E8FF06ECD77067998781E0F /* Pods_VirtaTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VirtaTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3883761E39626C5EB69472A7 /* Pods_Virta.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Virta.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -130,6 +146,7 @@
 			children = (
 				177BB0B92375742800DF7327 /* Info.plist */,
 				177BB0E02375847000DF7327 /* KeychainTests.swift */,
+				17C892C12376EF8E00F24057 /* LoginTests.swift */,
 			);
 			path = VirtaTests;
 			sourceTree = "<group>";
@@ -169,6 +186,8 @@
 		177BB0C52375748E00DF7327 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				17C892BB2376D93200F24057 /* LoginModel.swift */,
+				17C892B92376D89000F24057 /* LoginRequest.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -210,8 +229,8 @@
 		177BB0D023757C5100DF7327 /* Login */ = {
 			isa = PBXGroup;
 			children = (
-				177BB0C52375748E00DF7327 /* Model */,
 				177BB0D223757C6000DF7327 /* ViewModel */,
+				177BB0C52375748E00DF7327 /* Model */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -219,6 +238,10 @@
 		177BB0D123757C5A00DF7327 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				17C892B22376D7D700F24057 /* Result.swift */,
+				17C892B42376D84500F24057 /* Request.swift */,
+				17C892B62376D85D00F24057 /* RequestHeader.swift */,
+				17C892B02376D7CD00F24057 /* ServiceManager.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -227,6 +250,7 @@
 			isa = PBXGroup;
 			children = (
 				17C892AE2376D07D00F24057 /* LoginViewModel.swift */,
+				17C892BD2376E04F00F24057 /* LoginService.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -449,18 +473,25 @@
 			buildActionMask = 2147483647;
 			files = (
 				17C892AD2376CCCD00F24057 /* UIView+Extensions.swift in Sources */,
+				17C892BC2376D93200F24057 /* LoginModel.swift in Sources */,
+				17C892B72376D85D00F24057 /* RequestHeader.swift in Sources */,
 				177BB0D523757CA500DF7327 /* LoginViewController.swift in Sources */,
+				17C892BA2376D89000F24057 /* LoginRequest.swift in Sources */,
 				17C892A92376BFA700F24057 /* UIView+AutoLayout.swift in Sources */,
 				177BB0E32375857E00DF7327 /* Constants.swift in Sources */,
 				177BB0C82375753400DF7327 /* AppCoordinator.swift in Sources */,
 				177BB0CE23757B6E00DF7327 /* MainCoordinator.swift in Sources */,
 				177BB0CB23757B1800DF7327 /* LoginCoordinator.swift in Sources */,
+				17C892B52376D84500F24057 /* Request.swift in Sources */,
 				177BB0D923757DB800DF7327 /* Storyboard.swift in Sources */,
 				17C892AF2376D07D00F24057 /* LoginViewModel.swift in Sources */,
 				177BB0D723757CC600DF7327 /* ViewController.swift in Sources */,
 				177BB0DC2375814900DF7327 /* MainViewController.swift in Sources */,
+				17C892B12376D7CD00F24057 /* ServiceManager.swift in Sources */,
 				177BB0A12375742500DF7327 /* AppDelegate.swift in Sources */,
+				17C892BE2376E04F00F24057 /* LoginService.swift in Sources */,
 				17C892AB2376C26F00F24057 /* String+NSLocalized.swift in Sources */,
+				17C892B32376D7D700F24057 /* Result.swift in Sources */,
 				177BB0A32375742600DF7327 /* SceneDelegate.swift in Sources */,
 				177BB0DF2375835400DF7327 /* KeychainWrapper.swift in Sources */,
 			);
@@ -471,6 +502,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				177BB0E12375847000DF7327 /* KeychainTests.swift in Sources */,
+				17C892C22376EF8E00F24057 /* LoginTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

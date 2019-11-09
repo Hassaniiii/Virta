@@ -7,8 +7,14 @@
 //
 
 import UIKit
+import Combine
 
 final class LoginViewController: UIViewController, ViewController {
+    
+    // MARK: - Injected
+    
+    var viewModel: LoginViewModel!
+    let loginResult = PassthroughSubject<Bool, Never>()
     
     // MARK: - Views
     
@@ -33,6 +39,7 @@ final class LoginViewController: UIViewController, ViewController {
         view.returnKeyType = .next
         view.enablesReturnKeyAutomatically = true
         view.delegate = self
+        view.addTarget(self, action: #selector(onUsernameTextChanged(_:)), for: .editingChanged)
         
         return view
     }()
@@ -43,6 +50,7 @@ final class LoginViewController: UIViewController, ViewController {
         view.returnKeyType = .done
         view.enablesReturnKeyAutomatically = true
         view.delegate = self
+        view.addTarget(self, action: #selector(onPasswordTextChanged(_:)), for: .editingChanged)
         
         return view
     }()
@@ -79,6 +87,13 @@ final class LoginViewController: UIViewController, ViewController {
         
         return view
     }()
+    private lazy var loadingIndicator: UIActivityIndicatorView = {
+        let view = UIActivityIndicatorView(style: .medium)
+        view.color = .gray
+        view.hidesWhenStopped = true
+        
+        return view
+    }()
     
     // MARK: - ViewController
     
@@ -105,20 +120,61 @@ final class LoginViewController: UIViewController, ViewController {
             .fix(top: (32.0, credentialContainer))
             .fix(width: 150.0, height: 38.0)
             .center(toX: self.view)
+        
+        self.view.addSubview(loadingIndicator)
+        loadingIndicator
+            .center(toX: loginBtn, toY: loginBtn)
     }
     
     // MARK: - UIViewController
+    
+    private var cancellable = Set<AnyCancellable>()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.autolayoutSubviews()
+        self.viewModel.credentialValidate
+            .receive(on: RunLoop.main)
+            .assign(to: \.isEnabled, on: loginBtn)
+            .store(in: &cancellable)
+        self.viewModel.loading
+            .receive(on: RunLoop.main)
+            .sink(receiveValue: { [weak self] isLoading in
+                isLoading ? self?.loadingIndicator.startAnimating() : self?.loadingIndicator.stopAnimating()
+                self?.loginBtn.setTitle(isLoading ? "" : "Login".localized, for: .normal)
+            })
+            .store(in: &cancellable)
+    }
+    
+    deinit {
+        cancellable.forEach { $0.cancel() }
     }
     
     // MARK: - User actions
     
     @objc
+    func onUsernameTextChanged(_ sender: Any) {
+        viewModel.username = userNameField.text ?? ""
+    }
+    @objc
+    func onPasswordTextChanged(_ sender: Any) {
+        viewModel.password = passwordField.text ?? ""
+    }
+    @objc
     func onLoingButtonTapped(_ sender: Any) {
+        self.viewModel.login
+            .sink(receiveCompletion: { [weak self] completion in
+                if case let .failure(error) = completion {
+                    let alert = UIAlertController(title: "Error".localized, message: error.errorDescription, preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "OK".localized, style: .default, handler: nil))
+                    self?.present(alert, animated: true, completion: nil)
+                }
+            })
+            { [weak self] result in
+                self?.loginResult.send(result)
+            }
+            .store(in: &cancellable)
     }
 }
 

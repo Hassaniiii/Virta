@@ -6,6 +6,7 @@
 //  Copyright © 2019 Hassaniiii. All rights reserved.
 //
 
+import Combine
 import UIKit
 
 final class LoginCoordinator: Coordinator {
@@ -16,20 +17,34 @@ final class LoginCoordinator: Coordinator {
     }
     
     private lazy var loginViewController: LoginViewController = {
-        return Storyboard.main.instantiateViewController()
+        let view = Storyboard.main.instantiateViewController() as LoginViewController
+        view.viewModel = LoginViewModelImpl()
+        view.loginResult
+            .receive(on: RunLoop.main)
+            .sink { [weak self] result in
+                if result {  self?.startMainCoordinator() }
+            }
+            .cancel()
+        
+        return view
+    }()
+    private lazy var navigationController: UINavigationController = {
+        let navigationController = UINavigationController(rootViewController: loginViewController)
+        navigationController.setNavigationBarHidden(true, animated: false)
+        
+        return navigationController
     }()
     
     func start() {
-        window.rootViewController = loginViewController
+        window.rootViewController = navigationController
         window.makeKeyAndVisible()
     }
     
-    func start(with navigationController: UINavigationController) {
-        #if DEBUG
-        print("Login Coordinator Start")
-        #endif
-        
-//        let loginViewController: LoginViewController = Storyboard.main.instantiateViewController()
-//        navigationController.
+    func start(with navigationController: UINavigationController) {}
+    
+    // MARK: - Navigation
+    
+    func startMainCoordinator() {
+        MainCoordinator(window: self.window).start(with: navigationController)
     }
 }

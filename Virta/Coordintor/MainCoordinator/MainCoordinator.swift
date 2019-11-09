@@ -18,15 +18,19 @@ final class MainCoordinator: Coordinator {
     private lazy var mainViewController: MainViewController = {
         return Storyboard.main.instantiateViewController()
     }()
+    private lazy var navigationController: UINavigationController = {
+        let navigationController = UINavigationController(rootViewController: mainViewController)
+        navigationController.setNavigationBarHidden(true, animated: false)
+        
+        return navigationController
+    }()
     
     func start() {        
-        window.rootViewController = mainViewController
+        window.rootViewController = navigationController
         window.makeKeyAndVisible()
     }
     
     func start(with navigationController: UINavigationController) {
-        #if DEBUG
-        print("Main Coordinator Started with Navigation")
-        #endif
+        navigationController.pushViewController(mainViewController, animated: true)
     }
 }
