@@ -26,29 +26,43 @@ final class StationsListTableViewCell: UITableViewCell {
     // MARK: - Views
     
     private var containerView: UIView!
-    private var stationTitle: UILabel!
-    private var stationAddress: UILabel!
-    private var stationDetails: UIButton!
-    private var stationDistance: UILabel!
-    private var stationEvses: UICollectionView!
+    private lazy var stationTitle: UILabel = {
+        return titleBuilder(.boldSystemFont(ofSize: 14.0))
+    }()
+    private lazy var stationAddress: UILabel = {
+        return titleBuilder(.systemFont(ofSize: 12.0))
+    }()
+    private lazy var stationDetails: UIButton = {
+        let view = UIButton(frame: .zero)
+        view.setTitle("", for: .normal)
+        view.setImage(#imageLiteral(resourceName: "icNavigate.jpg"), for: .normal)
+        view.backgroundColor = .clear
+        view.contentMode = .scaleAspectFit
+        view.layer.masksToBounds = true
+        view.layer.cornerRadius = view.frame.width / 2
+        
+        return view
+    }()
+    private lazy var stationDistance: UILabel = {
+        let view = titleBuilder(.systemFont(ofSize: 9.0), alignment: .right)
+        view.textColor = #colorLiteral(red: 0.319334656, green: 0.569334507, blue: 1, alpha: 1)
+        
+        return view
+    }()
+//    private lazy var stationEvses: UICollectionView = {
+//
+//    }()
     
     func viewBuilder() {
-        self.subviews.forEach { $0.removeFromSuperview() }
+        if self.subviews.count > 0 {
+            self.subviews.forEach { $0.removeFromSuperview() }
+        }
         
         self.containerView = containerViewBuilder()
         self.addSubview(containerView)
-        
-        self.stationTitle = titleBuilder(.boldSystemFont(ofSize: 14.0))
         containerView.addSubview(stationTitle)
-        
-        self.stationAddress = titleBuilder(.systemFont(ofSize: 12.0))
         containerView.addSubview(stationAddress)
-        
-        self.stationDetails = detailsBuilder()
         containerView.addSubview(stationDetails)
-        
-        self.stationDistance = titleBuilder(.systemFont(ofSize: 9.0), alignment: .right)
-        self.stationDistance.textColor = #colorLiteral(red: 0.319334656, green: 0.569334507, blue: 1, alpha: 1)
         containerView.addSubview(stationDistance)
         
 //        self.stationEvses = evseViewBuilder()
@@ -96,32 +110,21 @@ extension StationsListTableViewCell {
         
         return view
     }
-    private func evseViewBuilder() -> UICollectionView {
-        let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .vertical
-        
-        let containerView = StationsListEvsesCollectionView(frame: .zero, collectionViewLayout: layout)
-        containerView.register(StationsListEvsesCollectionViewCell.self, forCellWithReuseIdentifier: String(describing: StationsListEvsesCollectionViewCell.self))
-        containerView.delegate = self
-        containerView.dataSource = self
-        
-        return containerView
-    }
+//    private func evseViewBuilder() -> UICollectionView {
+//        let layout = UICollectionViewFlowLayout()
+//        layout.scrollDirection = .vertical
+//        
+//        let containerView = StationsListEvsesCollectionView(frame: .zero, collectionViewLayout: layout)
+//        containerView.register(StationsListEvsesCollectionViewCell.self, forCellWithReuseIdentifier: String(describing: StationsListEvsesCollectionViewCell.self))
+//        containerView.delegate = self
+//        containerView.dataSource = self
+//        
+//        return containerView
+//    }
     private func titleBuilder(_ font: UIFont, alignment: NSTextAlignment = .left) -> UILabel {
         let view = UILabel(frame: .zero)
         view.textAlignment = alignment
         view.font = font
-        
-        return view
-    }
-    private func detailsBuilder() -> UIButton {
-        let view = UIButton(frame: .zero)
-        view.setTitle("", for: .normal)
-        view.setImage(#imageLiteral(resourceName: "icNavigate.jpg"), for: .normal)
-        view.backgroundColor = .clear
-        view.contentMode = .scaleAspectFit
-        view.layer.masksToBounds = true
-        view.layer.cornerRadius = view.frame.width / 2
         
         return view
     }

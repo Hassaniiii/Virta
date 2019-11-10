@@ -24,6 +24,10 @@ final class StationDetailsTableViewCell: UITableViewCell {
     private var evseID: UILabel!
     
     func viewBuilder() {
+        if self.subviews.count > 0 {
+            self.subviews.forEach { $0.removeFromSuperview() }
+        }
+        
         self.containerView = containerViewBuilder()
         self.addSubview(containerView)
         
@@ -41,7 +45,7 @@ final class StationDetailsTableViewCell: UITableViewCell {
         evseID
             .fix(left: (16.0, containerView), isRelative: false)
             .center(toY: containerView)
-            .fix(width: evseID.intrinsicContentSize.width * 1.5, height: 24.0)
+            .fix(width: evseID.intrinsicContentSize.width * 1.5, height: 28.0)
     }
 }
 

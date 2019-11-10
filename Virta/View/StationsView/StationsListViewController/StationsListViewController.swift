@@ -60,10 +60,10 @@ final class StationsListViewController: UIViewController, ViewController {
         super.viewDidLoad()
         
         self.autolayoutSubviews()
-        self.fetchStations()
         self.viewModel.loading
             .receive(on: RunLoop.main)
             .sink(receiveValue: { [weak self] isLoading in
+                self?.tableView.isHidden = isLoading
                 isLoading ? self?.loadingIndicator.startAnimating() : self?.loadingIndicator.stopAnimating()
             })
             .store(in: &cancellable)
@@ -74,6 +74,7 @@ final class StationsListViewController: UIViewController, ViewController {
                 self?.fetchStations()
             }
             .store(in: &cancellable)
+        self.fetchStations()
     }
     
     deinit {
