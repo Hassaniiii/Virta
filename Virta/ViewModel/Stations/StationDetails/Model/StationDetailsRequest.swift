@@ -18,7 +18,7 @@ struct StationDetailsRequest: Request {
     var bodyJSON: BodyType?
     
     init(_ station: StationsListModel) {
-        guard let token = KeychainWrapeprImpl().getValue(for: Constants.AuthorizationKey) else {
+        guard let token = KeychainWrapepr.getValue(for: Constants.AuthorizationKey) else {
             fatalError("Token cannot be null")
         }
         headers = RequestHeaderImpl(.authorizedHeader(token)).headers

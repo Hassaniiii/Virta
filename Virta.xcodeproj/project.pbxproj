@@ -12,6 +12,8 @@
 		174095A823781AFE008EA504 /* StationDetailsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 174095A723781AFE008EA504 /* StationDetailsTableViewCell.swift */; };
 		174095AA2378267C008EA504 /* StationDetailsTableViewFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 174095A92378267C008EA504 /* StationDetailsTableViewFooter.swift */; };
 		174095AC23783323008EA504 /* StatoinDetailsTableViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 174095AB23783323008EA504 /* StatoinDetailsTableViewHeader.swift */; };
+		174095AE237841DE008EA504 /* StationsListEvsesCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 174095AD237841DE008EA504 /* StationsListEvsesCollectionView.swift */; };
+		174095B0237844A8008EA504 /* StationsListEvsesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 174095AF237844A8008EA504 /* StationsListEvsesCollectionViewCell.swift */; };
 		1760011A2376FEB900996320 /* StationsListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 176001192376FEB900996320 /* StationsListTableViewCell.swift */; };
 		1760011C2376FF5A00996320 /* UITableView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1760011B2376FF5A00996320 /* UITableView+Extensions.swift */; };
 		1760012223771B1E00996320 /* StationsListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1760012123771B1E00996320 /* StationsListViewModel.swift */; };
@@ -68,6 +70,8 @@
 		174095A723781AFE008EA504 /* StationDetailsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationDetailsTableViewCell.swift; sourceTree = "<group>"; };
 		174095A92378267C008EA504 /* StationDetailsTableViewFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationDetailsTableViewFooter.swift; sourceTree = "<group>"; };
 		174095AB23783323008EA504 /* StatoinDetailsTableViewHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatoinDetailsTableViewHeader.swift; sourceTree = "<group>"; };
+		174095AD237841DE008EA504 /* StationsListEvsesCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationsListEvsesCollectionView.swift; sourceTree = "<group>"; };
+		174095AF237844A8008EA504 /* StationsListEvsesCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationsListEvsesCollectionViewCell.swift; sourceTree = "<group>"; };
 		176001192376FEB900996320 /* StationsListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationsListTableViewCell.swift; sourceTree = "<group>"; };
 		1760011B2376FF5A00996320 /* UITableView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Extensions.swift"; sourceTree = "<group>"; };
 		1760012123771B1E00996320 /* StationsListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationsListViewModel.swift; sourceTree = "<group>"; };
@@ -143,6 +147,8 @@
 			children = (
 				177BB0DB2375814900DF7327 /* StationsListViewController.swift */,
 				176001192376FEB900996320 /* StationsListTableViewCell.swift */,
+				174095AD237841DE008EA504 /* StationsListEvsesCollectionView.swift */,
+				174095AF237844A8008EA504 /* StationsListEvsesCollectionViewCell.swift */,
 			);
 			path = StationsListViewController;
 			sourceTree = "<group>";
@@ -244,8 +250,8 @@
 		177BB0C42375748800DF7327 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				179835432378189F008F070F /* Stations */,
 				177BB0D023757C5100DF7327 /* Login */,
+				179835432378189F008F070F /* Stations */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -609,12 +615,14 @@
 				177BB0CE23757B6E00DF7327 /* MainCoordinator.swift in Sources */,
 				177BB0CB23757B1800DF7327 /* LoginCoordinator.swift in Sources */,
 				17C892B52376D84500F24057 /* Request.swift in Sources */,
+				174095AE237841DE008EA504 /* StationsListEvsesCollectionView.swift in Sources */,
 				174095AA2378267C008EA504 /* StationDetailsTableViewFooter.swift in Sources */,
 				177BB0D923757DB800DF7327 /* Storyboard.swift in Sources */,
 				1760012723771C6F00996320 /* StationsListRequest.swift in Sources */,
 				17C892AF2376D07D00F24057 /* LoginViewModel.swift in Sources */,
 				1760012523771B8000996320 /* StationsListModel.swift in Sources */,
 				177BB0D723757CC600DF7327 /* ViewController.swift in Sources */,
+				174095B0237844A8008EA504 /* StationsListEvsesCollectionViewCell.swift in Sources */,
 				177BB0DC2375814900DF7327 /* StationsListViewController.swift in Sources */,
 				171E9120237736AB0089DE85 /* LocationService.swift in Sources */,
 				17C892B12376D7CD00F24057 /* ServiceManager.swift in Sources */,
@@ -718,7 +726,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -772,7 +780,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;

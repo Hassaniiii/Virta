@@ -13,8 +13,9 @@ struct StationDetailsModel: Codable {
     let id: Int
     let name: String
     let latitude, longitude: Double
-    let icon: Int
-    let address, city, openHours, providers: String
+    let icon: Int?
+    let address, city, providers: String
+    let openHours: String?
     let pictures: [String]
     let isV2G: Bool
     let termsAndConditionsURLActingEmp: Bool?
@@ -34,11 +35,11 @@ struct StationDetailsEvse: Codable {
     let available, reservable, reserved, occupied: Bool
     let isV2G: Bool
     let pricing: [Pricing]
-    let oneTimePayment, oneTimePaymentInAppEnabled: Bool
+    let oneTimePayment, oneTimePaymentInAppEnabled: Bool?
     let status, oneTimeMinimum: Int
     let oneTimePricing: [Pricing]
     let oneTimePricingRatio: Double
-    let minutesWithoutTimeCharge: Int
+    let minutesWithoutTimeCharge: Int?
     let evseID: String
 
     enum CodingKeys: String, CodingKey {
@@ -58,6 +59,6 @@ struct StationDetailsConnector: Codable {
 // MARK: - Pricing
 struct Pricing: Codable {
     let name: String
-    let priceCents: Int
+    let priceCents: Double
     let currency: String
 }

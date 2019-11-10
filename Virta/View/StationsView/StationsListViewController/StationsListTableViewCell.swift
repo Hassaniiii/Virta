@@ -18,6 +18,7 @@ final class StationsListTableViewCell: UITableViewCell {
             stationTitle.text = station.name
             stationAddress.text = station.address
             stationDistance.text = station.distanceKM ?? ""
+//            stationEvses.reloadData()
             self.viewConfiguration()
         }
     }
@@ -29,8 +30,11 @@ final class StationsListTableViewCell: UITableViewCell {
     private var stationAddress: UILabel!
     private var stationDetails: UIButton!
     private var stationDistance: UILabel!
+    private var stationEvses: UICollectionView!
     
     func viewBuilder() {
+        self.subviews.forEach { $0.removeFromSuperview() }
+        
         self.containerView = containerViewBuilder()
         self.addSubview(containerView)
         
@@ -46,6 +50,9 @@ final class StationsListTableViewCell: UITableViewCell {
         self.stationDistance = titleBuilder(.systemFont(ofSize: 9.0), alignment: .right)
         self.stationDistance.textColor = #colorLiteral(red: 0.319334656, green: 0.569334507, blue: 1, alpha: 1)
         containerView.addSubview(stationDistance)
+        
+//        self.stationEvses = evseViewBuilder()
+//        containerView.addSubview(stationEvses)
     }
     
     func viewConfiguration() {
@@ -58,6 +65,7 @@ final class StationsListTableViewCell: UITableViewCell {
         stationTitle
             .fix(top: (4.0, containerView), isRelative: false)
             .fix(left: (4.0, containerView))
+            .fix(right: (4.0, stationDistance), isRelative: true)
             .fix(height: 24.0)
 
         stationAddress
@@ -65,6 +73,10 @@ final class StationsListTableViewCell: UITableViewCell {
             .fix(left: (4.0, containerView))
             .fix(height: 21.0)
 
+//        stationEvses
+//            .fix(left: (0.0, containerView), right: (0.0, containerView), isRelative: false)
+//            .fix(top: (8.0, stationAddress), isRelative: true)
+        
         stationDetails
             .fix(top: (4.0, containerView), isRelative: false)
             .fix(right: (4.0, containerView))
@@ -84,6 +96,17 @@ extension StationsListTableViewCell {
         
         return view
     }
+    private func evseViewBuilder() -> UICollectionView {
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .vertical
+        
+        let containerView = StationsListEvsesCollectionView(frame: .zero, collectionViewLayout: layout)
+        containerView.register(StationsListEvsesCollectionViewCell.self, forCellWithReuseIdentifier: String(describing: StationsListEvsesCollectionViewCell.self))
+        containerView.delegate = self
+        containerView.dataSource = self
+        
+        return containerView
+    }
     private func titleBuilder(_ font: UIFont, alignment: NSTextAlignment = .left) -> UILabel {
         let view = UILabel(frame: .zero)
         view.textAlignment = alignment
@@ -101,5 +124,24 @@ extension StationsListTableViewCell {
         view.layer.cornerRadius = view.frame.width / 2
         
         return view
+    }
+}
+
+extension StationsListTableViewCell: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return station.evses.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = UICollectionViewCell()
+        cell.backgroundColor = .yellow
+        
+        return cell
+    }
+}
+
+extension StationsListTableViewCell: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return collectionView.frame.size
     }
 }

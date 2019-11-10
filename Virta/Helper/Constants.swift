@@ -9,6 +9,7 @@
 import Foundation
 
 struct Constants {
+    static let FirstLaunchTracker = "FirstLaunchTracker"
     static let AuthorizationKey = "AuthorizationKey"
     static let APIInitialPage = 0
     static let TableItemsThreshold = 3

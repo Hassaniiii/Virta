@@ -14,7 +14,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        if UserDefaults.standard.value(forKey: Constants.FirstLaunchTracker) == nil {
+            KeychainWrapepr.reset()
+            
+            UserDefaults.standard.set("true", forKey: Constants.FirstLaunchTracker)
+            UserDefaults.standard.synchronize()
+        }
+        
         return true
     }
 

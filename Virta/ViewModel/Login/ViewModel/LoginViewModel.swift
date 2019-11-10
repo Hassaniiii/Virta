@@ -39,7 +39,7 @@ final class LoginViewModelImpl: LoginViewModel {
                 self?.loading.send(true)
             }, receiveOutput: { token in
                 if !token.token.isEmpty {
-                    KeychainWrapeprImpl().set(value: token.token, for: Constants.AuthorizationKey)
+                    KeychainWrapepr.set(value: token.token, for: Constants.AuthorizationKey)
                 }
             }, receiveCompletion: { [weak self] _ in
                 self?.loading.send(false)

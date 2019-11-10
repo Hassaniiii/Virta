@@ -8,21 +8,19 @@
 
 import KeychainSwift
 
-protocol KeychainWrapper {
-    func set(value: String, for key: String)
-    func getValue(for key: String) -> String?
-}
-
-struct KeychainWrapeprImpl: KeychainWrapper {
-    
-    private let keychain = KeychainSwift()
+struct KeychainWrapepr {
     
     // MARK: - KeychainWrapper
     
-    func set(value: String, for key: String) {
-        keychain.set(value, forKey: key)
+    static func set(value: String, for key: String) {
+        KeychainSwift().set(value, forKey: key)
     }
-    func getValue(for key: String) -> String? {
-        return keychain.get(key)
+    
+    static func getValue(for key: String) -> String? {
+        return KeychainSwift().get(key)
+    }
+    
+    static func reset() {
+        KeychainSwift().clear()
     }
 }

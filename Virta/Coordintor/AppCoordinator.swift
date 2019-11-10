@@ -35,7 +35,6 @@ final class AppCoordinator: Coordinator {
     }()
     func start() {
         userDidLoggedIn ? self.mainCoordinator.start() : self.loginCoordinator.start()
-        
     }
     
     func start(with navigationController: UINavigationController) {
@@ -45,6 +44,6 @@ final class AppCoordinator: Coordinator {
 
 extension AppCoordinator {
     private var userDidLoggedIn: Bool {
-        return KeychainWrapeprImpl().getValue(for: Constants.AuthorizationKey) != nil
+        return KeychainWrapepr.getValue(for: Constants.AuthorizationKey) != nil
     }
 }

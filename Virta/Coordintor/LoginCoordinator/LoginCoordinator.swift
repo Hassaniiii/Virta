@@ -11,6 +11,7 @@ import UIKit
 
 final class LoginCoordinator: Coordinator {
     
+    private var navigationController: UINavigationController!
     private let window: UIWindow
     init(window: UIWindow) {
         self.window = window
@@ -18,24 +19,25 @@ final class LoginCoordinator: Coordinator {
     
     private lazy var loginViewController: LoginViewController = {
         let view = Storyboard.main.instantiateViewController() as LoginViewController
-        view.viewModel = LoginViewModelImpl()
+        view.viewModel = loginViewModel
         view.loginResult
             .receive(on: RunLoop.main)
             .sink { [weak self] result in
-                if result {  self?.startMainCoordinator() }
+                if result { self?.startMainCoordinator() }
             }
             .cancel()
         
         return view
     }()
-    private lazy var navigationController: UINavigationController = {
-        let navigationController = UINavigationController(rootViewController: loginViewController)
-        navigationController.setNavigationBarHidden(true, animated: false)
+    private lazy var loginViewModel: LoginViewModel = {
+        let viewModel = LoginViewModelImpl()
         
-        return navigationController
+        return viewModel
     }()
     
     func start() {
+        navigationController = UINavigationController(rootViewController: loginViewController)
+        navigationController.setNavigationBarHidden(true, animated: false)
         window.rootViewController = navigationController
         window.makeKeyAndVisible()
     }
@@ -44,7 +46,13 @@ final class LoginCoordinator: Coordinator {
     
     // MARK: - Navigation
     
+    private lazy var mainCoordinator: Coordinator = {
+        return MainCoordinator(window: self.window)
+    }()
+    
     func startMainCoordinator() {
-        MainCoordinator(window: self.window).start(with: navigationController)
+        DispatchQueue.main.async {
+            self.mainCoordinator.start(with: self.navigationController)
+        }
     }
 }

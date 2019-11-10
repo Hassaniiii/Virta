@@ -108,7 +108,7 @@ extension StationsListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(forIndexPath: indexPath) as StationsListTableViewCell
         cell.station = stations[indexPath.row]
-        
+
         return cell
     }
     
@@ -125,7 +125,7 @@ extension StationsListViewController: UITableViewDataSource {
 
 extension StationsListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 80.0
+        return 80 + ((CGFloat(stations[indexPath.row].evses.count) / 3.0) + 1) * 30
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

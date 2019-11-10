@@ -28,6 +28,7 @@ final class MainCoordinator: Coordinator {
                 self?.showDetailsViewController(for: station)
             }
             .cancel()
+        stationsViewController.navigationItem.hidesBackButton = true
         return stationsViewController
     }()
     private lazy var stationsViewModel: StationsListViewModel = {
@@ -50,6 +51,7 @@ final class MainCoordinator: Coordinator {
     }
     
     // MARK: - DetailsViewController
+    
     private lazy var stationDetailsViewController: StationDetailsViewController = {
         let detailsViewController = Storyboard.main.instantiateViewController() as StationDetailsViewController
         detailsViewController.viewModel = StationDetailsViewModelImpl()
@@ -58,8 +60,10 @@ final class MainCoordinator: Coordinator {
     }()
     
     func showDetailsViewController(for station: StationsListModel) {
-        stationDetailsViewController.station = station
-        stationDetailsViewController.modalTransitionStyle = .coverVertical
-        navigationController.present(stationDetailsViewController, animated: true, completion: nil)
+        DispatchQueue.main.async {
+            self.stationDetailsViewController.station = station
+            self.stationDetailsViewController.modalTransitionStyle = .coverVertical
+            self.navigationController.present(self.stationDetailsViewController, animated: true, completion: nil)
+        }
     }
 }
