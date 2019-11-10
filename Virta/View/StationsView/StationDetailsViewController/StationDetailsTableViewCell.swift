@@ -32,16 +32,16 @@ final class StationDetailsTableViewCell: UITableViewCell {
     }
     
     func viewConfiguration() {
-        self.backgroundColor = .clear
+        self.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
         
         containerView
-            .fix(top: (1.0, self), bottom: (1.0, self), isRelative: false)
-            .fix(left: (0.0, self), right: (0.0, self))
+            .fix(top: (8.0, self), bottom: (8.0, self), isRelative: false)
+            .fix(left: (16.0, self), right: (16.0, self))
 
         evseID
             .fix(left: (16.0, containerView), isRelative: false)
             .center(toY: containerView)
-            .fix(width: evseID.intrinsicContentSize.width * 1.3, height: 24.0)
+            .fix(width: evseID.intrinsicContentSize.width * 1.5, height: 24.0)
     }
 }
 

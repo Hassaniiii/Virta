@@ -10,6 +10,8 @@
 		1513A0C2F4ADBA5252FF596B /* Pods_Virta.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3883761E39626C5EB69472A7 /* Pods_Virta.framework */; };
 		171E9120237736AB0089DE85 /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 171E911F237736AB0089DE85 /* LocationService.swift */; };
 		174095A823781AFE008EA504 /* StationDetailsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 174095A723781AFE008EA504 /* StationDetailsTableViewCell.swift */; };
+		174095AA2378267C008EA504 /* StationDetailsTableViewFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 174095A92378267C008EA504 /* StationDetailsTableViewFooter.swift */; };
+		174095AC23783323008EA504 /* StatoinDetailsTableViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 174095AB23783323008EA504 /* StatoinDetailsTableViewHeader.swift */; };
 		1760011A2376FEB900996320 /* StationsListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 176001192376FEB900996320 /* StationsListTableViewCell.swift */; };
 		1760011C2376FF5A00996320 /* UITableView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1760011B2376FF5A00996320 /* UITableView+Extensions.swift */; };
 		1760012223771B1E00996320 /* StationsListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1760012123771B1E00996320 /* StationsListViewModel.swift */; };
@@ -64,6 +66,8 @@
 /* Begin PBXFileReference section */
 		171E911F237736AB0089DE85 /* LocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
 		174095A723781AFE008EA504 /* StationDetailsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationDetailsTableViewCell.swift; sourceTree = "<group>"; };
+		174095A92378267C008EA504 /* StationDetailsTableViewFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationDetailsTableViewFooter.swift; sourceTree = "<group>"; };
+		174095AB23783323008EA504 /* StatoinDetailsTableViewHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatoinDetailsTableViewHeader.swift; sourceTree = "<group>"; };
 		176001192376FEB900996320 /* StationsListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationsListTableViewCell.swift; sourceTree = "<group>"; };
 		1760011B2376FF5A00996320 /* UITableView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Extensions.swift"; sourceTree = "<group>"; };
 		1760012123771B1E00996320 /* StationsListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationsListViewModel.swift; sourceTree = "<group>"; };
@@ -343,6 +347,8 @@
 			children = (
 				179835382378128D008F070F /* StationDetailsViewController.swift */,
 				174095A723781AFE008EA504 /* StationDetailsTableViewCell.swift */,
+				174095AB23783323008EA504 /* StatoinDetailsTableViewHeader.swift */,
+				174095A92378267C008EA504 /* StationDetailsTableViewFooter.swift */,
 			);
 			path = StationDetailsViewController;
 			sourceTree = "<group>";
@@ -603,6 +609,7 @@
 				177BB0CE23757B6E00DF7327 /* MainCoordinator.swift in Sources */,
 				177BB0CB23757B1800DF7327 /* LoginCoordinator.swift in Sources */,
 				17C892B52376D84500F24057 /* Request.swift in Sources */,
+				174095AA2378267C008EA504 /* StationDetailsTableViewFooter.swift in Sources */,
 				177BB0D923757DB800DF7327 /* Storyboard.swift in Sources */,
 				1760012723771C6F00996320 /* StationsListRequest.swift in Sources */,
 				17C892AF2376D07D00F24057 /* LoginViewModel.swift in Sources */,
@@ -612,6 +619,7 @@
 				171E9120237736AB0089DE85 /* LocationService.swift in Sources */,
 				17C892B12376D7CD00F24057 /* ServiceManager.swift in Sources */,
 				177BB0A12375742500DF7327 /* AppDelegate.swift in Sources */,
+				174095AC23783323008EA504 /* StatoinDetailsTableViewHeader.swift in Sources */,
 				17C892BE2376E04F00F24057 /* LoginService.swift in Sources */,
 				17C892AB2376C26F00F24057 /* String+NSLocalized.swift in Sources */,
 				17C892B32376D7D700F24057 /* Result.swift in Sources */,

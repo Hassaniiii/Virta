@@ -15,7 +15,7 @@ struct StationDetailsModel: Codable {
     let latitude, longitude: Double
     let icon: Int
     let address, city, openHours, providers: String
-    let pictures: [Data]
+    let pictures: [String]
     let isV2G: Bool
     let termsAndConditionsURLActingEmp: Bool?
     let evses: [StationDetailsEvse]
