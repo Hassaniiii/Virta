@@ -10,35 +10,56 @@ import UIKit
 
 final class MainCoordinator: Coordinator {
     
+    private var navigationController: UINavigationController!
     private let window: UIWindow
     init(window: UIWindow) {
         self.window = window
     }
     
-    private lazy var stationsViewController: StationsViewController = {
-        let stationsViewController = Storyboard.main.instantiateViewController() as StationsViewController
+    // MARK: - ListViewController
+    
+    private lazy var stationsViewController: StationsListViewController = {
+        let stationsViewController = Storyboard.main.instantiateViewController() as StationsListViewController
         stationsViewController.title = "Nearby".localized
         stationsViewController.viewModel = stationsViewModel
-        
+        stationsViewController.onStationTapped
+            .receive(on: RunLoop.main)
+            .sink { [weak self] station in
+                self?.showDetailsViewController(for: station)
+            }
+            .cancel()
         return stationsViewController
     }()
-    private lazy var stationsViewModel: StationsViewModel = {
-        let viewModel = StationsViewModelImpl()
+    private lazy var stationsViewModel: StationsListViewModel = {
+        let viewModel = StationsListViewModelImpl()
         viewModel.locationService = LocationServiceImpl()
         
         return viewModel
     }()
-    private lazy var navigationController: UINavigationController = {
-        return UINavigationController(rootViewController: stationsViewController)
-    }()
     
-    func start() {        
+    func start() {
+        navigationController = UINavigationController(rootViewController: stationsViewController)
         window.rootViewController = navigationController
         window.makeKeyAndVisible()
     }
     
     func start(with navigationController: UINavigationController) {
+        self.navigationController = navigationController
         navigationController.setNavigationBarHidden(false, animated: false)
         navigationController.pushViewController(stationsViewController, animated: true)
+    }
+    
+    // MARK: - DetailsViewController
+    private lazy var stationDetailsViewController: StationDetailsViewController = {
+        let detailsViewController = Storyboard.main.instantiateViewController() as StationDetailsViewController
+        detailsViewController.viewModel = StationDetailsViewModelImpl()
+        
+        return detailsViewController
+    }()
+    
+    func showDetailsViewController(for station: StationsListModel) {
+        stationDetailsViewController.station = station
+        stationDetailsViewController.modalTransitionStyle = .coverVertical
+        navigationController.present(stationDetailsViewController, animated: true, completion: nil)
     }
 }

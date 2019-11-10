@@ -9,17 +9,18 @@
 import UIKit
 import Combine
 
-final class StationsViewController: UIViewController, ViewController {
+final class StationsListViewController: UIViewController, ViewController {
     
     // MARK: - Injected
     
-    var viewModel: StationsViewModel!
+    var viewModel: StationsListViewModel!
+    var onStationTapped = PassthroughSubject<StationsListModel, Never>()
     
     // MARK: - Views
     
     private lazy var tableView: UITableView = {
         let view = UITableView(frame: .zero)
-        view.registerClass(StationsTableViewCell.self)
+        view.registerClass(StationsListTableViewCell.self)
         view.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
         view.separatorStyle = .none
         view.allowsMultipleSelection = false
@@ -52,7 +53,7 @@ final class StationsViewController: UIViewController, ViewController {
     // MARK: - UIViewController
     
     private var cancellable = Set<AnyCancellable>()
-    private var stations: [StationModel] = []
+    private var stations: [StationsListModel] = []
     private var page: Int = Constants.APIInitialPage
     
     override func viewDidLoad() {
@@ -99,13 +100,13 @@ final class StationsViewController: UIViewController, ViewController {
     }
 }
 
-extension StationsViewController: UITableViewDataSource {
+extension StationsListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return stations.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(forIndexPath: indexPath) as StationsTableViewCell
+        let cell = tableView.dequeueReusableCell(forIndexPath: indexPath) as StationsListTableViewCell
         cell.station = stations[indexPath.row]
         
         return cell
@@ -122,13 +123,14 @@ extension StationsViewController: UITableViewDataSource {
     }
 }
 
-extension StationsViewController: UITableViewDelegate {
+extension StationsListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 80.0
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        onStationTapped.send(stations[indexPath.row])
     }
 }
 

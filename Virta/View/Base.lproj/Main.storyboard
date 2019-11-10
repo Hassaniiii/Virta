@@ -22,10 +22,10 @@
             </objects>
             <point key="canvasLocation" x="-514" y="110"/>
         </scene>
-        <!--Stations View Controller-->
+        <!--Stations List View Controller-->
         <scene sceneID="vO5-Ot-bkd">
             <objects>
-                <viewController storyboardIdentifier="StationsViewController" id="sX1-Ku-Z0e" customClass="StationsViewController" customModule="Virta" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="StationsListViewController" id="sX1-Ku-Z0e" customClass="StationsListViewController" customModule="Virta" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="SIT-uR-6gq">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -36,6 +36,21 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hIy-H2-xE6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="390" y="106"/>
+        </scene>
+        <!--Station Details View Controller-->
+        <scene sceneID="bWQ-2u-Twv">
+            <objects>
+                <viewController storyboardIdentifier="StationDetailsViewController" id="Ihr-af-Eq8" customClass="StationDetailsViewController" customModule="Virta" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="UJb-We-YeX">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="l2g-z5-LBK"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3aO-Ph-nDC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1312" y="107"/>
         </scene>
     </scenes>
 </document>

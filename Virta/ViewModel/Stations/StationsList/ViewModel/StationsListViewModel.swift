@@ -10,24 +10,24 @@ import Foundation
 import Combine
 import CoreLocation
 
-protocol StationsViewModel {
+protocol StationsListViewModel {
     var locationService: LocationService! { get set }
     var loading: PassthroughSubject<Bool, Never> { get }
     
-    func stations(at page: Int) -> AnyPublisher<[StationModel], APIError>
+    func stations(at page: Int) -> AnyPublisher<[StationsListModel], APIError>
 }
 
-final class StationsViewModelImpl: StationsViewModel {
+final class StationsListViewModelImpl: StationsListViewModel {
     
     private lazy var stationService: StationService = {
         return StationServiceImpl(locationService: self.locationService)
     }()
     
-    // MARK: - StationsViewModel
+    // MARK: - StationsListViewModel
     
     var locationService: LocationService!
     var loading = PassthroughSubject<Bool, Never>()
-    func stations(at page: Int) -> AnyPublisher<[StationModel], APIError> {
+    func stations(at page: Int) -> AnyPublisher<[StationsListModel], APIError> {
         return stationService.fetchStations(page: page)
             .receive(on: RunLoop.main)
             .handleEvents(receiveSubscription: { [weak self] _ in
@@ -37,12 +37,12 @@ final class StationsViewModelImpl: StationsViewModel {
             }, receiveCancel: { [weak self] in
                 self?.loading.send(false)
             })
-            .map { (list: [StationModel]) -> [StationModel] in
+            .map { (list: [StationsListModel]) -> [StationsListModel] in
                 list.map { [weak self] in
                     let itemLocation = CLLocation(latitude: $0.latitude, longitude: $0.longitude)
                     if let currentLocation = self?.locationService.locationValue {
                         let distance: Double = itemLocation.distance(from: currentLocation) / 1000
-                        return StationModel($0, distance: distance)
+                        return StationsListModel($0, distance: distance)
                     }
                     return $0
                 }

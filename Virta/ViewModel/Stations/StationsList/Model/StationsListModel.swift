@@ -9,20 +9,20 @@
 import Foundation
 
 // MARK: - StationsModelElement
-struct StationModel: Codable, Hashable {
+struct StationsListModel: Codable, Hashable {
     
     let id: Int
     let latitude, longitude: Double
     let icon: Int
     let name, city, address: String
     let provider: String
-    let evses: [Evse]
+    let evses: [StationsListEvse]
     let isRemoved, isPrivate: Bool
     
     var distance: Double?
     var distanceKM: String?
     
-    init(_ station: StationModel, distance: Double) {
+    init(_ station: StationsListModel, distance: Double) {
         self.id = station.id
         self.latitude = station.latitude
         self.longitude = station.longitude
@@ -43,20 +43,20 @@ struct StationModel: Codable, Hashable {
         hasher.combine(id)
     }
     
-    static func == (lhs: StationModel, rhs: StationModel) -> Bool {
+    static func == (lhs: StationsListModel, rhs: StationsListModel) -> Bool {
         return lhs.id == rhs.id
     }
 }
 
 // MARK: - Evse
-struct Evse: Codable {
+struct StationsListEvse: Codable {
     let id: Int
     let groupName: String
-    let connectors: [Connector]
+    let connectors: [StationListConnector]
 }
 
 // MARK: - Connector
-struct Connector: Codable {
+struct StationListConnector: Codable {
     let type: String
     let maxKw: Double
 }

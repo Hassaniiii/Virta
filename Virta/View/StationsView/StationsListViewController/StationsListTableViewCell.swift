@@ -10,15 +10,15 @@ import UIKit
 import Combine
 
 
-final class StationsTableViewCell: UITableViewCell {
+final class StationsListTableViewCell: UITableViewCell {
     
-    var station: StationModel! {
+    var station: StationsListModel! {
         didSet {
-            self.viewConfiguration()
-            
+            self.viewBuilder()
             stationTitle.text = station.name
             stationAddress.text = station.address
             stationDistance.text = station.distanceKM ?? ""
+            self.viewConfiguration()
         }
     }
     
@@ -30,39 +30,46 @@ final class StationsTableViewCell: UITableViewCell {
     private var stationDetails: UIButton!
     private var stationDistance: UILabel!
     
+    func viewBuilder() {
+        self.containerView = containerViewBuilder()
+        self.addSubview(containerView)
+        
+        self.stationTitle = titleBuilder(.boldSystemFont(ofSize: 14.0))
+        containerView.addSubview(stationTitle)
+        
+        self.stationAddress = titleBuilder(.systemFont(ofSize: 12.0))
+        containerView.addSubview(stationAddress)
+        
+        self.stationDetails = detailsBuilder()
+        containerView.addSubview(stationDetails)
+        
+        self.stationDistance = titleBuilder(.systemFont(ofSize: 9.0), alignment: .right)
+        self.stationDistance.textColor = #colorLiteral(red: 0.319334656, green: 0.569334507, blue: 1, alpha: 1)
+        containerView.addSubview(stationDistance)
+    }
+    
     func viewConfiguration() {
         self.backgroundColor = .clear
         
-        self.containerView = containerViewBuilder()
-        self.addSubview(containerView)
         containerView
             .fix(top: (1.0, self), bottom: (1.0, self), isRelative: false)
             .fix(left: (0.0, self), right: (0.0, self))
 
-        self.stationTitle = titleBuilder(.boldSystemFont(ofSize: 14.0))
-        containerView.addSubview(stationTitle)
         stationTitle
             .fix(top: (4.0, containerView), isRelative: false)
             .fix(left: (4.0, containerView))
             .fix(height: 24.0)
 
-        self.stationAddress = titleBuilder(.systemFont(ofSize: 12.0))
-        containerView.addSubview(stationAddress)
         stationAddress
-            .fix(top: (4.0, stationTitle))
+            .fix(top: (0.0, stationTitle))
             .fix(left: (4.0, containerView))
             .fix(height: 21.0)
 
-        self.stationDetails = detailsBuilder()
-        containerView.addSubview(stationDetails)
         stationDetails
             .fix(top: (4.0, containerView), isRelative: false)
             .fix(right: (4.0, containerView))
             .fix(width: 24.0, height: 24.0)
 
-        self.stationDistance = titleBuilder(.systemFont(ofSize: 9.0), alignment: .right)
-        self.stationDistance.textColor = #colorLiteral(red: 0.319334656, green: 0.569334507, blue: 1, alpha: 1)
-        containerView.addSubview(stationDistance)
         stationDistance
             .fix(top: (4.0, containerView), isRelative: false)
             .fix(right: (4.0, stationDetails), isRelative: true)
@@ -70,7 +77,7 @@ final class StationsTableViewCell: UITableViewCell {
     }
 }
 
-extension StationsTableViewCell {
+extension StationsListTableViewCell {
     private func containerViewBuilder() -> UIView {
         let view = UIView(frame: .zero)
         view.backgroundColor = .white

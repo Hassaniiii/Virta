@@ -8,8 +8,8 @@
 
 import CoreLocation
 
-struct StationRequest: Request {
-    typealias ReturnType = [StationModel]
+struct StationsListRequest: Request {
+    typealias ReturnType = [StationsListModel]
     typealias BodyType = EmptyModel
     
     var path: String = "/stations"
