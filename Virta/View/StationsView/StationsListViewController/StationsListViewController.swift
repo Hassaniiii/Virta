@@ -44,7 +44,7 @@ final class StationsListViewController: UIViewController, ViewController {
         tableView
             .fix(top: (0.0, self.view), bottom: (0.0, self.view), isRelative: false)
             .fix(left: (0.0, self.view), right: (0.0, self.view))
-        
+
         self.view.addSubview(loadingIndicator)
         loadingIndicator
             .center(toX: self.tableView, toY: self.tableView)
@@ -58,7 +58,7 @@ final class StationsListViewController: UIViewController, ViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+                
         self.autolayoutSubviews()
         self.viewModel.loading
             .receive(on: RunLoop.main)
@@ -109,7 +109,7 @@ extension StationsListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(forIndexPath: indexPath) as StationsListTableViewCell
         cell.station = stations[indexPath.row]
-
+        
         return cell
     }
     
@@ -126,7 +126,8 @@ extension StationsListViewController: UITableViewDataSource {
 
 extension StationsListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 80 + ((CGFloat(stations[indexPath.row].evses.count) / 3.0) + 1) * 30
+        let availableEvse = stations[indexPath.row].distinctEvsePoints.count
+        return 70 + CGFloat((availableEvse / 3) + 1) * 45
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -134,4 +135,3 @@ extension StationsListViewController: UITableViewDelegate {
         onStationTapped.send(stations[indexPath.row])
     }
 }
-

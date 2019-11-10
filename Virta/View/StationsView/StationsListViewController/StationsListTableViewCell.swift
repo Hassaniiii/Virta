@@ -18,7 +18,6 @@ final class StationsListTableViewCell: UITableViewCell {
             stationTitle.text = station.name
             stationAddress.text = station.address
             stationDistance.text = station.distanceKM ?? ""
-//            stationEvses.reloadData()
             self.viewConfiguration()
         }
     }
@@ -26,6 +25,7 @@ final class StationsListTableViewCell: UITableViewCell {
     // MARK: - Views
     
     private var containerView: UIView!
+    private var stationEvses: UIView!
     private lazy var stationTitle: UILabel = {
         return titleBuilder(.boldSystemFont(ofSize: 14.0))
     }()
@@ -49,9 +49,6 @@ final class StationsListTableViewCell: UITableViewCell {
         
         return view
     }()
-//    private lazy var stationEvses: UICollectionView = {
-//
-//    }()
     
     func viewBuilder() {
         if self.subviews.count > 0 {
@@ -65,8 +62,8 @@ final class StationsListTableViewCell: UITableViewCell {
         containerView.addSubview(stationDetails)
         containerView.addSubview(stationDistance)
         
-//        self.stationEvses = evseViewBuilder()
-//        containerView.addSubview(stationEvses)
+        self.stationEvses = evseContainerView()
+        containerView.addSubview(stationEvses)
     }
     
     func viewConfiguration() {
@@ -78,27 +75,27 @@ final class StationsListTableViewCell: UITableViewCell {
 
         stationTitle
             .fix(top: (4.0, containerView), isRelative: false)
-            .fix(left: (4.0, containerView))
-            .fix(right: (4.0, stationDistance), isRelative: true)
+            .fix(left: (8.0, containerView))
+            .fix(right: (2.0, stationDistance), isRelative: true)
             .fix(height: 24.0)
 
         stationAddress
-            .fix(top: (0.0, stationTitle))
-            .fix(left: (4.0, containerView))
+            .fix(top: (4.0, stationTitle))
+            .fix(left: (8.0, containerView))
             .fix(height: 21.0)
 
-//        stationEvses
-//            .fix(left: (0.0, containerView), right: (0.0, containerView), isRelative: false)
-//            .fix(top: (8.0, stationAddress), isRelative: true)
+        stationEvses
+            .fix(left: (8.0, containerView), isRelative: false)
+            .fix(top: (8.0, stationAddress), isRelative: true)
         
         stationDetails
             .fix(top: (4.0, containerView), isRelative: false)
-            .fix(right: (4.0, containerView))
+            .fix(right: (8.0, containerView))
             .fix(width: 24.0, height: 24.0)
 
         stationDistance
             .fix(top: (4.0, containerView), isRelative: false)
-            .fix(right: (4.0, stationDetails), isRelative: true)
+            .fix(right: (8.0, stationDetails), isRelative: true)
             .fix(height: 24.0)
     }
 }
@@ -110,17 +107,6 @@ extension StationsListTableViewCell {
         
         return view
     }
-//    private func evseViewBuilder() -> UICollectionView {
-//        let layout = UICollectionViewFlowLayout()
-//        layout.scrollDirection = .vertical
-//        
-//        let containerView = StationsListEvsesCollectionView(frame: .zero, collectionViewLayout: layout)
-//        containerView.register(StationsListEvsesCollectionViewCell.self, forCellWithReuseIdentifier: String(describing: StationsListEvsesCollectionViewCell.self))
-//        containerView.delegate = self
-//        containerView.dataSource = self
-//        
-//        return containerView
-//    }
     private func titleBuilder(_ font: UIFont, alignment: NSTextAlignment = .left) -> UILabel {
         let view = UILabel(frame: .zero)
         view.textAlignment = alignment
@@ -128,23 +114,73 @@ extension StationsListTableViewCell {
         
         return view
     }
-}
-
-extension StationsListTableViewCell: UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return station.evses.count
-    }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = UICollectionViewCell()
-        cell.backgroundColor = .yellow
+    private func evseContent(_ kw: Double, count: Int) -> UIView {
+        let containerView = UIStackView(frame: .zero)
+        containerView.axis = .horizontal
+        containerView.distribution = .fillEqually
+        containerView.spacing = 4.0
         
-        return cell
+        let imageContainer = UIStackView(frame: .zero)
+        imageContainer.axis = .vertical
+        imageContainer.distribution = .fill
+        let icon = UIImageView(image: #imageLiteral(resourceName: "icType2.jpg"))
+        icon.contentMode = .scaleAspectFit
+        let number = UILabel(frame: .zero)
+        number.textAlignment = .center
+        number.font = UIFont.systemFont(ofSize: 8.0)
+        number.text = "×\(count)"
+        
+        let kwContainer = UIStackView(frame: .zero)
+        kwContainer.axis = .vertical
+        kwContainer.distribution = .fill
+        let kwValue = UILabel(frame: .zero)
+        kwValue.textAlignment = .center
+        kwValue.font = UIFont.boldSystemFont(ofSize: 30.0)
+        kwValue.text = kw.clean
+        let kwTitle = UILabel(frame: .zero)
+        kwTitle.textAlignment = .center
+        kwTitle.font = UIFont.systemFont(ofSize: 8.0)
+        kwTitle.text = "KW"
+            
+        imageContainer.addArrangedSubview(icon)
+        if count > 1 {
+            imageContainer.addArrangedSubview(number.fix(height: 10.0))
+        }
+        kwContainer.addArrangedSubview(kwValue)
+        kwContainer.addArrangedSubview(kwTitle.fix(height: 10.0))
+        
+        containerView.addArrangedSubview(imageContainer)
+        containerView.addArrangedSubview(kwContainer)
+        
+        return containerView
+    }
+    private func evseRow(from stack: [UIView]) -> UIView {
+        let containerView = UIStackView(frame: .zero)
+        containerView.axis = .horizontal
+        containerView.distribution = .fill
+        containerView.spacing = 16.0
+        
+        stack.forEach { containerView.addArrangedSubview($0) }
+        return containerView
+    }
+    private func evseContainerView() -> UIView {
+        let containerView = UIStackView(frame: .zero)
+        containerView.axis = .vertical
+        containerView.distribution = .fill
+        containerView.spacing = 2.0
+        
+        var rowItems: [UIView] = []
+        for (key, value) in station.distinctEvsePoints {
+            if rowItems.count == 3 {
+                containerView.addArrangedSubview(evseRow(from: rowItems))
+                rowItems.removeAll()
+            }
+            rowItems.append(evseContent(key, count: value))
+        }
+        containerView.addArrangedSubview(evseRow(from: rowItems))
+        
+        return containerView
     }
 }
 
-extension StationsListTableViewCell: UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return collectionView.frame.size
-    }
-}

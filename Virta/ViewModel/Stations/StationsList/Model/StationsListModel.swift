@@ -20,7 +20,20 @@ struct StationsListModel: Codable, Hashable {
     let isRemoved, isPrivate: Bool
     
     var distance: Double?
-    var distanceKM: String?
+    var distanceKM: String? {
+        guard let distance = distance else { return nil }
+        return String(format: "%.2f KM", distance)
+    }
+    var distinctEvsePoints: [Double:Int] {
+        return evses.reduce(into: [:]) { (result: inout [Double:Int], item: StationsListEvse) in
+            item.connectors.forEach {
+                if result[$0.maxKw] == nil {
+                    result[$0.maxKw] = 0
+                }
+                result[$0.maxKw]! += 1
+            }
+        }
+    }
     
     init(_ station: StationsListModel, distance: Double) {
         self.id = station.id
@@ -36,7 +49,6 @@ struct StationsListModel: Codable, Hashable {
         self.isPrivate = station.isPrivate
         
         self.distance = distance
-        self.distanceKM = String(format: "%.2f KM", distance)
     }
     
     func hash(into hasher: inout Hasher) {

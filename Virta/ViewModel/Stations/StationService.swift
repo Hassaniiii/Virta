@@ -16,7 +16,7 @@ protocol StationService {
 }
 extension StationService {
     private var perPage: Int {
-        return 100
+        return 500
     }
     
     func fetchStations(page: Int) -> AnyPublisher<[StationsListModel], APIError> {
